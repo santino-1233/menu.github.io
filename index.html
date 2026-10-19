@@ -4,17 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Menú</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="encabezado">
-    <h1>Menú</h1>
-    <p id="estado" class="estado">Cargando menú…</p>
+  <header class="hero">
+    <div class="hero-contenido">
+      <span class="hero-sello">Cafetería · Pastelería</span>
+      <h1>Nuestro Menú</h1>
+      <p class="hero-subtitulo">Café de especialidad, tortas y dulces hechos a diario</p>
+      <p id="estado" class="estado">Cargando menú…</p>
+    </div>
   </header>
 
   <nav id="navegacion" class="navegacion" aria-label="Categorías"></nav>
 
   <main id="menu" class="menu"></main>
+
+  <footer class="pie">
+    <p>Precios en pesos argentinos</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
