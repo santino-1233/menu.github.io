@@ -1,0 +1,154 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --fondo: #faf6f0;
+  --texto: #2b2622;
+  --secundario: #7a6e63;
+  --acento: #a0522d;
+  --borde: #e6dcd0;
+  --agotado: #b5aaa0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--texto);
+  line-height: 1.4;
+}
+
+.encabezado {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+}
+
+.encabezado h1 {
+  font-size: 2.2rem;
+  color: var(--acento);
+  letter-spacing: 0.5px;
+}
+
+.estado {
+  margin-top: 0.5rem;
+  color: var(--secundario);
+  font-size: 0.9rem;
+}
+
+.estado.error {
+  color: #a33;
+}
+
+.navegacion {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding: 0.75rem 1rem;
+  background: var(--fondo);
+  border-bottom: 1px solid var(--borde);
+}
+
+.navegacion a {
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--texto);
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.navegacion a:hover {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: #fff;
+}
+
+.menu {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.categoria {
+  margin-top: 2rem;
+  scroll-margin-top: 4.5rem;
+}
+
+.categoria h2 {
+  font-size: 1.5rem;
+  color: var(--acento);
+  border-bottom: 2px solid var(--acento);
+  padding-bottom: 0.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.subcategoria {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--secundario);
+  margin: 1.25rem 0 0.5rem;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--borde);
+}
+
+.item-info {
+  flex: 1;
+}
+
+.item-nombre {
+  font-weight: 600;
+}
+
+.item-descripcion {
+  font-size: 0.85rem;
+  color: var(--secundario);
+  margin-top: 0.15rem;
+}
+
+.item-precio {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.item.agotado .item-nombre,
+.item.agotado .item-precio,
+.item.agotado .item-descripcion {
+  color: var(--agotado);
+  text-decoration: line-through;
+}
+
+.badge-agotado {
+  display: inline-block;
+  margin-left: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background: var(--agotado);
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+
+@media (max-width: 480px) {
+  .encabezado h1 {
+    font-size: 1.8rem;
+  }
+  .categoria h2 {
+    font-size: 1.3rem;
+  }
+}
