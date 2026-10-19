@@ -65,8 +65,13 @@ function formatearPrecio(valor) {
   return "$" + numero.toLocaleString("es-AR");
 }
 
+// Icono de espiga para el sello Sin TACC
+const ICONO_SIN_TACC =
+  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22V6M12 6c-2-1-2-3 0-4 2 1 2 3 0 4zM12 11c-2.5-.5-3.5-2.5-3-4 2.5.5 3.5 2.5 3 4zM12 11c2.5-.5 3.5-2.5 3-4-2.5.5-3.5 2.5-3 4zM12 16c-2.5-.5-3.5-2.5-3-4 2.5.5 3.5 2.5 3 4zM12 16c2.5-.5 3.5-2.5 3-4-2.5.5-3.5 2.5-3 4z"/></svg>';
+
 function crearItem(plato) {
   const disponible = plato.disponible.toUpperCase() !== "NO";
+  const esSinTACC = /sin\s*tacc/i.test(plato.plato);
 
   const item = document.createElement("div");
   item.className = "item" + (disponible ? "" : " agotado");
@@ -77,6 +82,13 @@ function crearItem(plato) {
   const nombre = document.createElement("div");
   nombre.className = "item-nombre";
   nombre.textContent = plato.plato;
+
+  if (esSinTACC) {
+    const sello = document.createElement("span");
+    sello.className = "badge-sin-tacc";
+    sello.innerHTML = ICONO_SIN_TACC + "<span>Sin TACC</span>";
+    nombre.appendChild(sello);
+  }
 
   if (!disponible) {
     const badge = document.createElement("span");
@@ -168,7 +180,7 @@ async function cargarMenu() {
   const estado = document.getElementById("estado");
 
   try {
-    // Agrego un parámetro para evitar que el navegador use una copia vieja
+    // Parámetro extra para evitar que el navegador use una copia vieja
     const respuesta = await fetch(URL_CSV + "&t=" + Date.now());
     if (!respuesta.ok) throw new Error("HTTP " + respuesta.status);
 
